@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         if(bxC2D.IsTouchingLayers(LayerMask.GetMask("Blocks"))){
-        if(Input.GetButtonDown("Jump")){
-            rb2d.velocity += new Vector2(0f, jumpSpeed);
-        }
+            if(Input.GetButtonDown("Jump")){
+                rb2d.velocity += new Vector2(0f, jumpSpeed);
+            }
         }
     }
 
