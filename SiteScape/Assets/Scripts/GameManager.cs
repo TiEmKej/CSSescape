@@ -5,23 +5,28 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    int score = 0;
     int maxPoints;
     public TMP_Text scoreText;
 
+    Teleport teleport;
+
     private void Start() {
+        teleport = FindObjectOfType<Teleport>();
+    }
+
+    private void Update() {
         maxPoints = GameObject.FindObjectsOfType<Point>().Length;
-        scoreText.text = "Zebrane fragmenty \n" + score.ToString() + "z" + maxPoints;
+        if(maxPoints == 0){
+            scoreText.text = "Teleport aktywny";
+            teleport.Activation(true);
+        }
+        else{
+            scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
+        }
     }
-    
-    public int GetScore(){
-        return score;
-    }
-    public void ChangeScore(int number){
-        score += number;
-        scoreText.text = "Zebrane fragmenty \n" + score.ToString() + "z" + maxPoints;
-    }
-    public int GetMaxPoints(){
+
+    public int Points(){
+        Debug.Log(maxPoints);
         return maxPoints;
     }
 }

@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
 {
     //Zmienne
     float axisX = 0f;
-    float runSpeed = 300f;
-    float jumpSpeed = 7f;
+    float runSpeed = 200f;
+    float jumpSpeed = 8.25f;
     //Komponenty
     Rigidbody2D rb2d;
     BoxCollider2D bxC2D;
