@@ -22,11 +22,11 @@ EditorBuildSettings:
     guid: ce1e48a4e5f07af4cb488e2a37c1efb9
   - enabled: 1
     path: Assets/Scenes/Level 4.unity
-    guid: 7b8fbc709e77f5945bea17a5715c3fda
+    guid: ede22936ab651844faec713220150d5b
   - enabled: 1
-    path: Assets/Scenes/Level 5.unity
-    guid: 81447fd636ae7ca41bb2e404b7e159ec
-  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 938e7ec536c9af4448417e0e5a5f4a14
+  - enabled: 0
     path: Assets/Scenes/TestPlay.unity
     guid: b77e7db8d29c83a4283d46c0e3b6644c
   m_configObjects: {}

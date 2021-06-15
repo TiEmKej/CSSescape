@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     float enemySpeed = 100f;
     float changeVector = 1f;
     float enemyPosX;
+    float randomStartDirection;
     [SerializeField]float posXChange;
 
     Rigidbody2D rb2d;
@@ -15,7 +16,11 @@ public class Enemy : MonoBehaviour
     CircleCollider2D cr2d;
     private void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-        enemyPosX = transform.position.x;       
+        enemyPosX = transform.position.x;
+        randomStartDirection = UnityEngine.Random.Range(0f,1f);
+        if(randomStartDirection > 0.5f){
+            changeVector *= -1f;
+        }     
     }
     private void OnTriggerEnter2D(Collider2D otherObject) {
         if(otherObject.tag == "Player"){
@@ -25,6 +30,7 @@ public class Enemy : MonoBehaviour
         }
     }
     private void FixedUpdate() {
+        if(posXChange != 0){
         if(transform.position.x > enemyPosX+posXChange){
             changeVector *= -1f;
         }
@@ -32,5 +38,6 @@ public class Enemy : MonoBehaviour
             changeVector *= -1f;
         }
         rb2d.velocity = new Vector2 (enemySpeed * Time.fixedDeltaTime * changeVector, rb2d.velocity.y);
+        }
     }
 }

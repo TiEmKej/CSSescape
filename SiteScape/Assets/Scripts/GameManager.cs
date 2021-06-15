@@ -12,21 +12,19 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         teleport = FindObjectOfType<Teleport>();
-    }
-
-    private void Update() {
         maxPoints = GameObject.FindObjectsOfType<Point>().Length;
-        if(maxPoints == 0){
-            scoreText.text = "Teleport aktywny";
-            teleport.Activation(true);
-        }
-        else{
-            scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
-        }
+        scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
     }
-
-    public int Points(){
-        Debug.Log(maxPoints);
-        return maxPoints;
+    private void Update() {
+        if(GameObject.FindObjectsOfType<Point>().Length < maxPoints){
+            maxPoints = GameObject.FindObjectsOfType<Point>().Length;
+            if(maxPoints == 0){
+                scoreText.text = "Teleport aktywny";
+                teleport.Activation(true);
+            }
+            else{
+                scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
+            }
+        }
     }
 }

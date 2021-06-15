@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     //Komponenty
     Rigidbody2D rb2d;
     BoxCollider2D bxC2D;
+    AudioSource audioPlay;
 
     private void Start(){
         //Przypisanie komponentów
         rb2d = GetComponent<Rigidbody2D>();
         bxC2D = GetComponent<BoxCollider2D>();
+        audioPlay = GetComponent<AudioSource>();
     }
 
 
@@ -30,8 +32,11 @@ public class Player : MonoBehaviour
         
     }
 
-    private void Jump()
-    {
+    public void PlayAudio(){
+        audioPlay.Play();
+    }
+
+    private void Jump(){
         if(bxC2D.IsTouchingLayers(LayerMask.GetMask("Blocks"))){
             if(Input.GetButtonDown("Jump")){
                 rb2d.velocity += new Vector2(0f, jumpSpeed);
@@ -39,15 +44,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Movement()
-    {
+    private void Movement(){
         rb2d.velocity = new Vector2(axisX * Time.fixedDeltaTime * runSpeed, rb2d.velocity.y);
     }
 
-    private void AxisUpdate()
-    {
+    private void AxisUpdate(){
         axisX = Input.GetAxis("Horizontal");
     }
-
-
 }
