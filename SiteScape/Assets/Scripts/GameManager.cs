@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         teleport = FindObjectOfType<Teleport>();
         maxPoints = GameObject.FindObjectsOfType<Point>().Length;
         scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
+        GameObject.FindGameObjectWithTag("Music").GetComponent<audioPlayer>().PlayMusic();
     }
     private void Update() {
         if(GameObject.FindObjectsOfType<Point>().Length < maxPoints){

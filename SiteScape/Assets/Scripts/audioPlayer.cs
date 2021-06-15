@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class audioPlayer : MonoBehaviour
 {
-    public static audioPlayer _instance;
-    public static audioPlayer Instance
-    {
-        get {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<audioPlayer>();
-             
-                if (_instance == null)
-                {
-                    GameObject container = new GameObject("Bicycle");
-                    _instance = container.AddComponent<audioPlayer>();
-                }
-            }
-     
-            return _instance;
+    private AudioSource _audioPlayer;
+
+    private void Awake(){ 
+        DontDestroyOnLoad(transform.gameObject);
+        _audioPlayer = GetComponent<AudioSource>();
+    }
+ 
+    public void PlayMusic(){
+        if(_audioPlayer.isPlaying){
+             return;
         }
+        _audioPlayer.Play();
+    }
+ 
+    public void StopMusic(){
+        _audioPlayer.Stop();
     }
 }
