@@ -11,10 +11,16 @@ public class GameManager : MonoBehaviour
     Teleport teleport;
 
     private void Start() {
+
         teleport = FindObjectOfType<Teleport>();
         maxPoints = GameObject.FindObjectsOfType<Point>().Length;
-        scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
+
+        if(scoreText != null){
+            scoreText.text = "Fragmenty do zebrania \n" + maxPoints;
+        }
+        if(GameObject.FindGameObjectWithTag("Music") != null){
         GameObject.FindGameObjectWithTag("Music").GetComponent<audioPlayer>().PlayMusic();
+        }
     }
     private void Update() {
         if(GameObject.FindObjectsOfType<Point>().Length < maxPoints){
